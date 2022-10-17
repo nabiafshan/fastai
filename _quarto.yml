@@ -3,11 +3,19 @@ project:
 
 website:
   title: "fastai notes"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  # navbar:
+  #   left:
+  #     - href: index.qmd
+  #       text: Home
+  #     - about.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Lessons"
+        contents:
+          - lessons/hello.ipynb
+          - lessons/01_what_is_that.ipynb
 
 format:
   html:
