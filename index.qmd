@@ -1,5 +1,5 @@
 ---
-title: "fastai_notes"
+title: "fastai notes"
 ---
 
 This is a Quarto website.
