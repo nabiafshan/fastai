@@ -12,6 +12,9 @@ website:
     style: "docked"
     search: true
     contents:
+      - section: "Blog"
+        contents:
+          - blog/create_blog.ipynb
       - section: "Lessons"
         contents:
           - lessons/hello.ipynb
