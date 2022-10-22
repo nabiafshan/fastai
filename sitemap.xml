@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nabiafshan.github.io/fastai/index.html</loc>
-    <lastmod>2022-10-17T20:29:22.963Z</lastmod>
+    <lastmod>2022-10-22T11:28:43.744Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nabiafshan.github.io/fastai/blog/create_blog.html</loc>
+    <lastmod>2022-10-22T11:28:44.386Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/about.html</loc>
-    <lastmod>2022-10-17T20:29:23.246Z</lastmod>
+    <lastmod>2022-10-22T11:28:44.667Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/lessons/01_what_is_that.html</loc>
-    <lastmod>2022-10-17T20:29:23.771Z</lastmod>
+    <lastmod>2022-10-22T11:28:45.152Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/lessons/hello.html</loc>
-    <lastmod>2022-10-17T20:29:24.108Z</lastmod>
+    <lastmod>2022-10-22T11:28:45.488Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/blog.html</loc>
-    <lastmod>2022-10-17T20:29:24.446Z</lastmod>
+    <lastmod>2022-10-22T11:28:45.859Z</lastmod>
   </url>
 </urlset>
