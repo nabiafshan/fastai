@@ -9,44 +9,9 @@
   {
     "objectID": "blog/create_blog.html",
     "href": "blog/create_blog.html",
-    "title": "How to create a blog for hosting jupyter notebooks",
+    "title": "fastai notes",
     "section": "",
-    "text": "Code\nfrom IPython.display import Image, display\nfrom ipywidgets import widgets, HBox"
-  },
-  {
-    "objectID": "blog/create_blog.html#step-1-create-a-github-repository-for-your-blog",
-    "href": "blog/create_blog.html#step-1-create-a-github-repository-for-your-blog",
-    "title": "How to create a blog for hosting jupyter notebooks",
-    "section": "Step 1: Create a github repository for your blog",
-    "text": "Step 1: Create a github repository for your blog\nHere I’m creating a repo called blog for all my blogging needs.\n\n\nCode\nImage(filename='files/create_repo.png', width='400') \n\n\n\n\n\nDownload the repo to your local machine so you can add in files:\n\nI like using Github Desktop for this. But whatever works for you.\nHere’s a tutorial on how to download code from github (aka cloning repos from github)\n\n\n\nCode\nImage(filename='files/download_repo.png', width='600') \n\n\n\n\n\nChoose the destination path (local path) where you want your repo:\n\nI’m choosing Documents/GitHub/blog\n\n\n\nCode\nImage(filename='files/choose_dest.png', width='600')"
-  },
-  {
-    "objectID": "blog/create_blog.html#step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website",
-    "href": "blog/create_blog.html#step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website",
-    "title": "How to create a blog for hosting jupyter notebooks",
-    "section": "Step 2: Head over to quarto docs to learn how to create files required for building your website",
-    "text": "Step 2: Head over to quarto docs to learn how to create files required for building your website\n\nHead over to https://quarto.org/docs/websites/\nI prefer setting things up using the terminal.\n\nAs the docs say, you need to do the follwing:\n\nbe in the parent folder of where your blog is. For me, this means being at Documents/GitHub\nrun the command to create quarto’s magic files in your blog: quarto create-project blog --type website\nrun quarto preview blog to view the preview of the built in website\n\n\n\nCode\nx = Image(filename='files/quarto_website.png', width='400') \ny = Image(filename='files/create_files.png', width='400') \nz = Image(filename='files/orig_preview.png', width='400')\ndisplay(x, ' ', y, '', z)\n\n\n\n\n\n' '\n\n\n\n\n\n''"
-  },
-  {
-    "objectID": "blog/create_blog.html#step-3-make-changes-to-_quarto.yml",
-    "href": "blog/create_blog.html#step-3-make-changes-to-_quarto.yml",
-    "title": "How to create a blog for hosting jupyter notebooks",
-    "section": "Step 3: Make changes to _quarto.yml",
-    "text": "Step 3: Make changes to _quarto.yml\n\nHere, I remove (comment out) the blue navigation bar navbar and add a sidebar instead.\n\nSee the quarto docs on navbar and sidebar\n\nIn the sidebar, I create 2 sections: fastai and blog.\n\nUnder each section is contents where I put in the relative paths of notebooks I want to display under those sections.\nTo keep this organized, I’ve created two separate folders lessons and myblog\nWhenever I need to add a new notebook:\n\nI can just download the notebook from Colab (or Kaggle)\ndrop nb into the corresponding folder\nadd a line under the correct section pointing to the nb’s path\n\n\n\n\n\nCode\nx = Image(filename='files/yml_file.png', width='400') \ny = Image(filename='files/files.png', width='200') \ndisplay(x, ' ', y,)\n\n\n\n\n\n' '\n\n\n\n\n\nUsing quarto preview blog in the terminal (as I did in the previous step, I can see what my website looks like:\n\nthe sidebar has 2 sections fastai and blog\n\nunder each is a rendered nb\n\n\n\n\nCode\nImage(filename='files/new preview.png', width='600')"
-  },
-  {
-    "objectID": "blog/create_blog.html#step-4-publish-blog-to-github-pages",
-    "href": "blog/create_blog.html#step-4-publish-blog-to-github-pages",
-    "title": "How to create a blog for hosting jupyter notebooks",
-    "section": "Step 4: Publish blog to github pages",
-    "text": "Step 4: Publish blog to github pages\nTo complete this step, I used github pages, publish command from the quarto documentation.\n\nStep 4.1 New branch called gh-pages\nI use github desktop to do git related things:\n\nCommit changes to main branch\nCreate a new branch called gh-pages\n\n\n\nCode\n!ls -ltr files\n\n\ntotal 7530\n-rw------- 1 root root  536600 Oct 22 08:10  create_repo.png\n-rw------- 1 root root  934879 Oct 22 08:40  download_repo.png\n-rw------- 1 root root  780780 Oct 22 08:43  choose_dest.png\n-rw------- 1 root root  684226 Oct 22 08:48  quarto_website.png\n-rw------- 1 root root  223923 Oct 22 08:54  create_files.png\n-rw------- 1 root root  163439 Oct 22 10:12  orig_preview.png\n-rw------- 1 root root  126830 Oct 22 10:18  yml_file.png\n-rw------- 1 root root   66804 Oct 22 10:18  files.png\n-rw------- 1 root root 1178521 Oct 22 10:32 'new preview.png'\n-rw------- 1 root root  572315 Oct 22 10:41 'commit changes.png'\n-rw------- 1 root root  498975 Oct 22 10:42  create_branch.png\n-rw------- 1 root root  534631 Oct 22 10:43  publish_branch.png\n-rw------- 1 root root  572489 Oct 22 10:44  check_settings.png\n-rw------- 1 root root  295161 Oct 22 10:45  gitignore.png\n-rw------- 1 root root  158490 Oct 22 10:46  publish.png\n-rw------- 1 root root  377923 Oct 22 10:47  final_view.png\n\n\n\n\nCode\nx = Image(filename='files/create_branch.png', height='400') \ny = Image(filename='files/publish_branch.png', height='400') \n\ndisplay(x, ' ', y,)\n\n\n\n\n\n' '\n\n\n\n\n\n\nThen go to github repo, check settings are okay. I didn’t need to make any changes here.\n\n\n\nCode\nImage(filename='files/check_settings.png', height='400') \n\n\n\n\n\n\n\nStep 4.2: Modify .gitignore\n\n\nCode\nImage(filename='files/gitignore.png', height='400') \n\n\n\n\n\n\nMove to the main branch, push all changes to remote\n\n\n\nCode\nImage(filename='files/commit_changes2.png', height='400')"
-  },
-  {
-    "objectID": "blog/create_blog.html#step-5-publish-while-youre-in-main-branch",
-    "href": "blog/create_blog.html#step-5-publish-while-youre-in-main-branch",
-    "title": "How to create a blog for hosting jupyter notebooks",
-    "section": "Step 5: Publish (while you’re in main branch)!",
-    "text": "Step 5: Publish (while you’re in main branch)!\n\nHere’s the quarto documentation\n\n\n\nCode\nImage(filename='files/publish.png', height='200') \n\n\n\n\n\nThe final site looks like this:\n\nFrom the address bar, you see this is hosted on github now\n\n\n\nCode\nImage(filename='files/final_view.png', height='300')"
+    "text": "Here I’m creating a repo called blog for all my blogging needs.\n\n\n\nDownload the repo to your local machine so you can add in files:\n\nI like using Github Desktop for this. But whatever works for you.\nHere’s a tutorial on how to download code from github (aka cloning repos from github)\n\n\n\n\nChoose the destination path (local path) where you want your repo:\n\nI’m choosing Documents/GitHub/blog\n\n\n\n\n\n\n\n\nHead over to https://quarto.org/docs/websites/\nI prefer setting things up using the terminal.\n\nAs the docs say, you need to do the follwing:\n\nbe in the parent folder of where your blog is. For me, this means being at Documents/GitHub\nrun the command to create quarto’s magic files in your blog: quarto create-project blog --type website\nrun quarto preview blog to view the preview of the built in website\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere, I remove (comment out) the blue navigation bar navbar and add a sidebar instead.\n\nSee the quarto docs on navbar and sidebar\n\nIn the sidebar, I create 2 sections: fastai and blog.\n\nUnder each section is contents where I put in the relative paths of notebooks I want to display under those sections.\nTo keep this organized, I’ve created two separate folders lessons and myblog\nWhenever I need to add a new notebook:\n\nI can just download the notebook from Colab (or Kaggle)\ndrop nb into the corresponding folder\nadd a line under the correct section pointing to the nb’s path\n\n\n\n\n\n\n\n\n\nUsing quarto preview blog in the terminal (as I did in the previous step, I can see what my website looks like:\n\nthe sidebar has 2 sections fastai and blog\n\nunder each is a rendered nb\n\n\n\n\n\n\n\n\nTo complete this step, I used github pages, publish command from the quarto documentation.\n\n\nI use github desktop to do git related things:\n\nCommit changes to main branch\nCreate a new branch called gh-pages\n\n\n\n\n\n\n\n\nThen go to github repo, check settings are okay. I didn’t need to make any changes here.\n\n\n\n\n\n\n\n\n\n\n\nMove to the main branch, push all changes to remote\n\n\n\n\n\n\n\n\n\nHere’s the quarto documentation\nThe rule seems to be that you make/push all changes in main branch. Use gh-pages branch only when you’re using the command quarto publish gh-pages\n\n\n\n\nThe final site looks like this:\n\nFrom the address bar, you see this is hosted on github now\n\n\n\n\nAaaand it’s done!\nYou can view the site at https://nabiafshan.github.io/blog/\nIt looks pretty good!"
   },
   {
     "objectID": "about.html",

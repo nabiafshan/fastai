@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>fastai notes - How to create a blog for hosting jupyter notebooks</title>
+<title>fastai notes – create_blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -132,7 +69,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">How to create a blog for hosting jupyter notebooks</h1>
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -165,7 +102,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/create_blog.html" class="sidebar-item-text sidebar-link active">How to create a blog for hosting jupyter notebooks</a>
+  <a href="../blog/create_blog.html" class="sidebar-item-text sidebar-link active">How to create a blog using quarto and github-pages</a>
   </div>
 </li>
       </ul>
@@ -201,15 +138,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#how-to-create-a-blog-using-quarto-and-github-pages" id="toc-how-to-create-a-blog-using-quarto-and-github-pages" class="nav-link active" data-scroll-target="#how-to-create-a-blog-using-quarto-and-github-pages">How to create a blog using quarto and github-pages</a>
   <ul class="collapse">
-  <li><a href="#step-1-create-a-github-repository-for-your-blog" id="toc-step-1-create-a-github-repository-for-your-blog" class="nav-link" data-scroll-target="#step-1-create-a-github-repository-for-your-blog">Step 1: Create a github repository for your blog</a></li>
-  <li><a href="#step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website" id="toc-step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website" class="nav-link" data-scroll-target="#step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website">Step 2: Head over to quarto docs to learn how to create files required for building your website</a></li>
+  <li><a href="#step-1-create-a-repo" id="toc-step-1-create-a-repo" class="nav-link" data-scroll-target="#step-1-create-a-repo">Step 1: Create a repo</a></li>
+  <li><a href="#step-2-create-files-for-building-website" id="toc-step-2-create-files-for-building-website" class="nav-link" data-scroll-target="#step-2-create-files-for-building-website">Step 2: Create files for building website</a></li>
   <li><a href="#step-3-make-changes-to-_quarto.yml" id="toc-step-3-make-changes-to-_quarto.yml" class="nav-link" data-scroll-target="#step-3-make-changes-to-_quarto.yml">Step 3: Make changes to <code>_quarto.yml</code></a></li>
-  <li><a href="#step-4-publish-blog-to-github-pages" id="toc-step-4-publish-blog-to-github-pages" class="nav-link" data-scroll-target="#step-4-publish-blog-to-github-pages">Step 4: Publish blog to github pages</a>
+  <li><a href="#step-4-set-up-github-pages" id="toc-step-4-set-up-github-pages" class="nav-link" data-scroll-target="#step-4-set-up-github-pages">Step 4: Set up github pages</a>
   <ul class="collapse">
   <li><a href="#step-4.1-new-branch-called-gh-pages" id="toc-step-4.1-new-branch-called-gh-pages" class="nav-link" data-scroll-target="#step-4.1-new-branch-called-gh-pages">Step 4.1 New branch called <code>gh-pages</code></a></li>
   <li><a href="#step-4.2-modify-.gitignore" id="toc-step-4.2-modify-.gitignore" class="nav-link" data-scroll-target="#step-4.2-modify-.gitignore">Step 4.2: Modify <code>.gitignore</code></a></li>
   </ul></li>
-  <li><a href="#step-5-publish-while-youre-in-main-branch" id="toc-step-5-publish-while-youre-in-main-branch" class="nav-link" data-scroll-target="#step-5-publish-while-youre-in-main-branch">Step 5: Publish (while you’re in <code>main</code> branch)!</a></li>
+  <li><a href="#step-5-publish-while-youre-on-main-branch" id="toc-step-5-publish-while-youre-on-main-branch" class="nav-link" data-scroll-target="#step-5-publish-while-youre-on-main-branch">Step 5: Publish (while you’re on <code>main</code> branch)!</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -217,74 +154,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">How to create a blog for hosting jupyter notebooks</h1>
-<p class="subtitle lead">Using Quarto and GitHub Pages</p>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-    
-  </div>
-  
-
-</header>
-
-<div class="cell" data-execution_count="26">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image, display</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> widgets, HBox</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <section id="how-to-create-a-blog-using-quarto-and-github-pages" class="level1">
 <h1>How to create a blog using quarto and github-pages</h1>
-<section id="step-1-create-a-github-repository-for-your-blog" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-create-a-github-repository-for-your-blog">Step 1: Create a github repository for your blog</h2>
+<section id="step-1-create-a-repo" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-create-a-repo">Step 1: Create a repo</h2>
 <p>Here I’m creating a repo called <code>blog</code> for all my blogging needs.</p>
-<div class="cell" data-outputid="c81e8a9e-b67d-4951-ecbb-3ac2812157e3" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/create_repo.png'</span>, width<span class="op">=</span><span class="st">'400'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<p><img src="create_blog_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1BezTNTZeJ7IubVL4H8H_15TSzuu0JFXx" width="400"></p>
 </div>
 <p>Download the repo to your local machine so you can add in files:</p>
 <ul>
 <li>I like using Github Desktop for this. But whatever works for you.</li>
 <li>Here’s a tutorial on how to download code from github (aka cloning repos from github)</li>
 </ul>
-<div class="cell" data-outputid="5aa849b5-4488-430d-ca1e-aedc5417e4a6" data-execution_count="9">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/download_repo.png'</span>, width<span class="op">=</span><span class="st">'600'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<p><img src="create_blog_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1WQ-vljxmK_2K3G8dVcFToTg-xFYbJ0wd" width="600"></p>
 </div>
 <p>Choose the destination path (<code>local path</code>) where you want your repo:</p>
 <ul>
 <li>I’m choosing <code>Documents/GitHub/blog</code></li>
 </ul>
-<div class="cell" data-outputid="9454cf48-6ecf-41d8-f280-e4367c6d7ae3" data-execution_count="11">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/choose_dest.png'</span>, width<span class="op">=</span><span class="st">'600'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<p><img src="create_blog_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1W8vFNMhv2mm0t28r69Th9C2FQb1BXSPD" width="600"></p>
 </div>
 </section>
-<section id="step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-head-over-to-quarto-docs-to-learn-how-to-create-files-required-for-building-your-website">Step 2: Head over to quarto docs to learn how to create files required for building your website</h2>
+<section id="step-2-create-files-for-building-website" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-create-files-for-building-website">Step 2: Create files for building website</h2>
 <ul>
 <li><p>Head over to https://quarto.org/docs/websites/</p></li>
 <li><p>I prefer setting things up using the terminal.</p></li>
@@ -295,29 +192,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>run the command to create quarto’s magic files in your blog: <code>quarto create-project blog --type website</code></li>
 <li>run <code>quarto preview blog</code> to view the preview of the built in website</li>
 </ol>
-<div class="cell" data-outputid="7e8eeee5-8789-488c-b0f8-96e50994acdf" data-execution_count="38">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/quarto_website.png'</span>, width<span class="op">=</span><span class="st">'400'</span>) </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/create_files.png'</span>, width<span class="op">=</span><span class="st">'400'</span>) </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/orig_preview.png'</span>, width<span class="op">=</span><span class="st">'400'</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>display(x, <span class="st">' '</span>, y, <span class="st">''</span>, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<p><img src="https://drive.google.com/uc?id=1M_00h-01tBa5qeS8mxy_oZE2DLteTD2B" width="400"></p>
 </div>
-<div class="cell-output cell-output-display">
-<pre><code>' '</code></pre>
+<div>
+<p><img src="https://drive.google.com/uc?id=1_DNki3yFHlDIAcJqyKkU6zdQ0KSz1_2R" width="400"></p>
 </div>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-6-output-3.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>''</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-6-output-5.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1UdG-Dge8ETGErm-DRgMM9zDGMqcNel1v" width="400"></p>
 </div>
 </section>
 <section id="step-3-make-changes-to-_quarto.yml" class="level2">
@@ -339,22 +221,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="73237ca7-363e-43b5-c4c2-814816d992f8" data-execution_count="40">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/yml_file.png'</span>, width<span class="op">=</span><span class="st">'400'</span>) </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/files.png'</span>, width<span class="op">=</span><span class="st">'200'</span>) </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>display(x, <span class="st">' '</span>, y,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<p><img src="https://drive.google.com/uc?id=1hRZKaHMR9PIl2bW30QEWXKwV50ByyCh8" width="400"></p>
 </div>
-<div class="cell-output cell-output-display">
-<pre><code>' '</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-7-output-3.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1yGtsSH67S5IH1IFnPpAgf21_Zgdfy7lA" width="200"></p>
 </div>
 <p>Using <code>quarto preview blog</code> in the terminal (as I did in the previous step, I can see what my website looks like:</p>
 <ul>
@@ -363,18 +234,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>under each is a rendered nb</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="f20ebe9b-30e0-4f24-ef98-4366f81fe06f" data-execution_count="47">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/new preview.png'</span>, width<span class="op">=</span><span class="st">'600'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="47">
-<p><img src="create_blog_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1qlHbIDGcgVhjvQoe0UeNR64hskv3Ak_Z" width="600"></p>
 </div>
 </section>
-<section id="step-4-publish-blog-to-github-pages" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-publish-blog-to-github-pages">Step 4: Publish blog to github pages</h2>
+<section id="step-4-set-up-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-set-up-github-pages">Step 4: Set up github pages</h2>
 <p>To complete this step, I used <a href="https://quarto.org/docs/publishing/github-pages.html#publish-command">github pages, publish command</a> from the quarto documentation.</p>
 <section id="step-4.1-new-branch-called-gh-pages" class="level3">
 <h3 class="anchored" data-anchor-id="step-4.1-new-branch-called-gh-pages">Step 4.1 New branch called <code>gh-pages</code></h3>
@@ -383,114 +248,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Commit changes to <code>main</code> branch</li>
 <li>Create a new branch called <code>gh-pages</code></li>
 </ol>
-<div class="cell" data-outputid="2adcc29c-ada0-4ed7-d8ef-833a4c17e0f4" data-execution_count="48">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>ltr files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>total 7530
--rw------- 1 root root  536600 Oct 22 08:10  create_repo.png
--rw------- 1 root root  934879 Oct 22 08:40  download_repo.png
--rw------- 1 root root  780780 Oct 22 08:43  choose_dest.png
--rw------- 1 root root  684226 Oct 22 08:48  quarto_website.png
--rw------- 1 root root  223923 Oct 22 08:54  create_files.png
--rw------- 1 root root  163439 Oct 22 10:12  orig_preview.png
--rw------- 1 root root  126830 Oct 22 10:18  yml_file.png
--rw------- 1 root root   66804 Oct 22 10:18  files.png
--rw------- 1 root root 1178521 Oct 22 10:32 'new preview.png'
--rw------- 1 root root  572315 Oct 22 10:41 'commit changes.png'
--rw------- 1 root root  498975 Oct 22 10:42  create_branch.png
--rw------- 1 root root  534631 Oct 22 10:43  publish_branch.png
--rw------- 1 root root  572489 Oct 22 10:44  check_settings.png
--rw------- 1 root root  295161 Oct 22 10:45  gitignore.png
--rw------- 1 root root  158490 Oct 22 10:46  publish.png
--rw------- 1 root root  377923 Oct 22 10:47  final_view.png</code></pre>
+<div>
+<p><img src="https://drive.google.com/uc?id=1g5s0kU5zn2VZ9mVMHOxlrHMkC4Gvjpdg" height="400"></p>
 </div>
-</div>
-<div class="cell" data-outputid="0c29ebb5-11de-4d89-fdf4-cf8f977f215b" data-execution_count="59">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/create_branch.png'</span>, height<span class="op">=</span><span class="st">'400'</span>) </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> Image(filename<span class="op">=</span><span class="st">'files/publish_branch.png'</span>, height<span class="op">=</span><span class="st">'400'</span>) </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>display(x, <span class="st">' '</span>, y,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>' '</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="create_blog_files/figure-html/cell-10-output-3.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1o0rIZTKzWDD7hrJpB4_nZAMYfBV2iPgv" height="400"></p>
 </div>
 <ol start="3" type="1">
 <li>Then go to github repo, check settings are okay. I didn’t need to make any changes here.</li>
 </ol>
-<div class="cell" data-outputid="622d388e-6c34-429f-d5a2-9588e40eba77" data-execution_count="55">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/check_settings.png'</span>, height<span class="op">=</span><span class="st">'400'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="55">
-<p><img src="create_blog_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1kADp1SqJh6J9emwiLvwC5vfhu7H_givu" height="400"></p>
 </div>
 </section>
 <section id="step-4.2-modify-.gitignore" class="level3">
 <h3 class="anchored" data-anchor-id="step-4.2-modify-.gitignore">Step 4.2: Modify <code>.gitignore</code></h3>
-<div class="cell" data-outputid="1075b310-c676-4595-a7c7-2ec0877908c1" data-execution_count="58">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/gitignore.png'</span>, height<span class="op">=</span><span class="st">'400'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="58">
-<p><img src="create_blog_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1BkiN-9UXz-7DZL5WwkvffSpNXi6_REkR" height="300"></p>
 </div>
 <ul>
 <li>Move to the <code>main</code> branch, push all changes to remote</li>
 </ul>
-<div class="cell" data-outputid="f5e6ae0a-6ceb-4fc1-8387-0a48b86ce95a" data-execution_count="62">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/commit_changes2.png'</span>, height<span class="op">=</span><span class="st">'400'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="62">
-<p><img src="create_blog_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1jYmS9XTPZsGGz9P9vi3WSQQDb1KcgADS" height="400"></p>
 </div>
 </section>
 </section>
-<section id="step-5-publish-while-youre-in-main-branch" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-publish-while-youre-in-main-branch">Step 5: Publish (while you’re in <code>main</code> branch)!</h2>
+<section id="step-5-publish-while-youre-on-main-branch" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-publish-while-youre-on-main-branch">Step 5: Publish (while you’re on <code>main</code> branch)!</h2>
 <ul>
-<li>Here’s the quarto <a href="https://quarto.org/docs/publishing/github-pages.html#publishing">documentation</a></li>
+<li><p>Here’s the quarto <a href="https://quarto.org/docs/publishing/github-pages.html#publishing">documentation</a></p></li>
+<li><p>The rule seems to be that you make/push all changes in <code>main</code> branch. Use <code>gh-pages</code> branch only when you’re using the command <code>quarto publish gh-pages</code></p></li>
 </ul>
-<div class="cell" data-outputid="3237c89f-3313-43bb-92c0-fbd33ce05bb5" data-execution_count="64">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/publish.png'</span>, height<span class="op">=</span><span class="st">'200'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="64">
-<p><img src="create_blog_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
-</div>
+<div>
+<p><img src="https://drive.google.com/uc?id=1EvAIGFV07o9X9Gvd568MEiOqheE3M8ba" height="200"></p>
 </div>
 <p>The final site looks like this:</p>
 <ul>
 <li>From the address bar, you see this is hosted on github now</li>
 </ul>
-<div class="cell" data-outputid="755d3fd0-e331-40ff-9329-1cd87f775185" data-execution_count="66">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'files/final_view.png'</span>, height<span class="op">=</span><span class="st">'300'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="66">
-<p><img src="create_blog_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<div>
+<p><img src="https://drive.google.com/uc?id=1Rk7gEwyfyGnc7Eo7TJHg-WVCn1NYrUvi" height="300"></p>
 </div>
-</div>
+<p>Aaaand it’s done!</p>
+<p>You can view the site at https://nabiafshan.github.io/blog/</p>
+<p>It looks pretty good!</p>
 
 
 </section>
