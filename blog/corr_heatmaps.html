@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>fastai notes – corr_heatmaps</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">fastai notes</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Blog</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/create_blog.html" class="sidebar-item-text sidebar-link">Quarto blog</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/corr_heatmaps.html" class="sidebar-item-text sidebar-link active">Correlation heatmaps</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Lessons</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/hello.html" class="sidebar-item-text sidebar-link">Quarto Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lessons/01_what_is_that.html" class="sidebar-item-text sidebar-link">1- What is that?</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#correlation-heatmaps" id="toc-correlation-heatmaps" class="nav-link active" data-scroll-target="#correlation-heatmaps">Correlation heatmaps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="correlation-heatmaps" class="level1">
+<h1>Correlation heatmaps</h1>
+<p>using gene expression data</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> sns.diverging_palette(<span class="dv">230</span>, <span class="dv">20</span>, as_cmap<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="9277477e-723b-407f-aa20-43228f63cd54" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ge <span class="op">=</span> pd.read_csv(<span class="st">'data/breast_cancer/77_cancer_proteomes_CPTAC_itraq.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ge <span class="op">=</span> ge.drop([<span class="st">'gene_symbol'</span>, <span class="st">'gene_name'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ge <span class="op">=</span> ge.set_index(<span class="st">'RefSeq_accession_number'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ge <span class="op">=</span> ge.dropna()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+
+  <div id="df-4b13f5ae-2615-4bbf-8593-7ea254261a97">
+    <div class="colab-df-container">
+      <div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>AO-A12D.01TCGA</th>
+      <th>C8-A131.01TCGA</th>
+      <th>AO-A12B.01TCGA</th>
+      <th>BH-A18Q.02TCGA</th>
+      <th>C8-A130.02TCGA</th>
+      <th>C8-A138.03TCGA</th>
+      <th>E2-A154.03TCGA</th>
+      <th>C8-A12L.04TCGA</th>
+      <th>A2-A0EX.04TCGA</th>
+      <th>AO-A12D.05TCGA</th>
+      <th>...</th>
+      <th>AO-A12B.34TCGA</th>
+      <th>A2-A0SW.35TCGA</th>
+      <th>AO-A0JL.35TCGA</th>
+      <th>BH-A0BV.35TCGA</th>
+      <th>A2-A0YM.36TCGA</th>
+      <th>BH-A0C7.36TCGA</th>
+      <th>A2-A0SX.36TCGA</th>
+      <th>263d3f-I.CPTAC</th>
+      <th>blcdb9-I.CPTAC</th>
+      <th>c4155b-C.CPTAC</th>
+    </tr>
+    <tr>
+      <th>RefSeq_accession_number</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NP_958782</th>
+      <td>1.096131</td>
+      <td>2.609943</td>
+      <td>-0.659828</td>
+      <td>0.195341</td>
+      <td>-0.494060</td>
+      <td>2.765081</td>
+      <td>0.862659</td>
+      <td>1.407570</td>
+      <td>1.185108</td>
+      <td>1.100688</td>
+      <td>...</td>
+      <td>-0.963904</td>
+      <td>-0.487772</td>
+      <td>-0.106680</td>
+      <td>-0.065838</td>
+      <td>0.655850</td>
+      <td>-0.552212</td>
+      <td>-0.398560</td>
+      <td>0.598585</td>
+      <td>-0.191285</td>
+      <td>0.566975</td>
+    </tr>
+    <tr>
+      <th>NP_958785</th>
+      <td>1.111370</td>
+      <td>2.650422</td>
+      <td>-0.648742</td>
+      <td>0.215413</td>
+      <td>-0.503899</td>
+      <td>2.779709</td>
+      <td>0.870186</td>
+      <td>1.407570</td>
+      <td>1.192612</td>
+      <td>1.100688</td>
+      <td>...</td>
+      <td>-0.938210</td>
+      <td>-0.487772</td>
+      <td>-0.106680</td>
+      <td>-0.055893</td>
+      <td>0.658143</td>
+      <td>-0.547749</td>
+      <td>-0.392601</td>
+      <td>0.606697</td>
+      <td>-0.183918</td>
+      <td>0.578702</td>
+    </tr>
+    <tr>
+      <th>NP_958786</th>
+      <td>1.111370</td>
+      <td>2.650422</td>
+      <td>-0.654285</td>
+      <td>0.215413</td>
+      <td>-0.500619</td>
+      <td>2.779709</td>
+      <td>0.870186</td>
+      <td>1.410312</td>
+      <td>1.188860</td>
+      <td>1.100688</td>
+      <td>...</td>
+      <td>-0.943919</td>
+      <td>-0.487772</td>
+      <td>-0.106680</td>
+      <td>-0.065838</td>
+      <td>0.655850</td>
+      <td>-0.552212</td>
+      <td>-0.392601</td>
+      <td>0.603993</td>
+      <td>-0.186022</td>
+      <td>0.576747</td>
+    </tr>
+    <tr>
+      <th>NP_000436</th>
+      <td>1.107561</td>
+      <td>2.646374</td>
+      <td>-0.632113</td>
+      <td>0.205377</td>
+      <td>-0.510459</td>
+      <td>2.797995</td>
+      <td>0.866423</td>
+      <td>1.407570</td>
+      <td>1.185108</td>
+      <td>1.100688</td>
+      <td>...</td>
+      <td>-0.935355</td>
+      <td>-0.487772</td>
+      <td>-0.106680</td>
+      <td>-0.055893</td>
+      <td>0.655850</td>
+      <td>-0.552212</td>
+      <td>-0.392601</td>
+      <td>0.603993</td>
+      <td>-0.186022</td>
+      <td>0.576747</td>
+    </tr>
+    <tr>
+      <th>NP_958781</th>
+      <td>1.115180</td>
+      <td>2.646374</td>
+      <td>-0.640428</td>
+      <td>0.215413</td>
+      <td>-0.503899</td>
+      <td>2.787023</td>
+      <td>0.870186</td>
+      <td>1.413053</td>
+      <td>1.200116</td>
+      <td>1.093358</td>
+      <td>...</td>
+      <td>-0.935355</td>
+      <td>-0.503853</td>
+      <td>-0.106680</td>
+      <td>-0.062523</td>
+      <td>0.651264</td>
+      <td>-0.556675</td>
+      <td>-0.395581</td>
+      <td>0.603993</td>
+      <td>-0.167079</td>
+      <td>0.576747</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>XP_003846524</th>
+      <td>2.654339</td>
+      <td>0.715535</td>
+      <td>0.160528</td>
+      <td>-8.716757</td>
+      <td>0.388225</td>
+      <td>1.496053</td>
+      <td>-3.694801</td>
+      <td>-0.870670</td>
+      <td>-0.743348</td>
+      <td>3.383894</td>
+      <td>...</td>
+      <td>1.300058</td>
+      <td>-4.105941</td>
+      <td>-3.620036</td>
+      <td>-2.598691</td>
+      <td>-2.462510</td>
+      <td>-5.083982</td>
+      <td>-4.792895</td>
+      <td>0.641854</td>
+      <td>-2.257159</td>
+      <td>-0.720976</td>
+    </tr>
+    <tr>
+      <th>NP_443073</th>
+      <td>-0.119194</td>
+      <td>1.144610</td>
+      <td>-1.203037</td>
+      <td>1.700762</td>
+      <td>0.371826</td>
+      <td>-1.718572</td>
+      <td>0.873949</td>
+      <td>-0.851479</td>
+      <td>0.787411</td>
+      <td>1.617433</td>
+      <td>...</td>
+      <td>-1.377869</td>
+      <td>0.821200</td>
+      <td>1.494581</td>
+      <td>3.259359</td>
+      <td>-0.109983</td>
+      <td>-2.698723</td>
+      <td>-0.294287</td>
+      <td>0.420100</td>
+      <td>0.226521</td>
+      <td>-0.537262</td>
+    </tr>
+    <tr>
+      <th>NP_001004456</th>
+      <td>-2.024094</td>
+      <td>-0.166903</td>
+      <td>-3.071010</td>
+      <td>2.353112</td>
+      <td>-1.445222</td>
+      <td>0.197769</td>
+      <td>4.618518</td>
+      <td>1.914760</td>
+      <td>3.158587</td>
+      <td>-2.820708</td>
+      <td>...</td>
+      <td>-2.785351</td>
+      <td>1.203922</td>
+      <td>-0.269946</td>
+      <td>1.233740</td>
+      <td>1.894022</td>
+      <td>-1.556297</td>
+      <td>0.724603</td>
+      <td>0.847382</td>
+      <td>0.520142</td>
+      <td>0.948084</td>
+    </tr>
+    <tr>
+      <th>NP_997625</th>
+      <td>1.637123</td>
+      <td>1.059605</td>
+      <td>1.648810</td>
+      <td>0.422827</td>
+      <td>0.493181</td>
+      <td>-2.354914</td>
+      <td>0.636856</td>
+      <td>0.763303</td>
+      <td>2.948483</td>
+      <td>2.390718</td>
+      <td>...</td>
+      <td>2.150828</td>
+      <td>-1.352917</td>
+      <td>-0.605897</td>
+      <td>0.849171</td>
+      <td>1.135068</td>
+      <td>-1.978013</td>
+      <td>-1.745163</td>
+      <td>-1.099726</td>
+      <td>-0.592251</td>
+      <td>-0.595894</td>
+    </tr>
+    <tr>
+      <th>NP_003270</th>
+      <td>-0.252537</td>
+      <td>2.193011</td>
+      <td>-2.813263</td>
+      <td>0.389373</td>
+      <td>2.369266</td>
+      <td>-0.354459</td>
+      <td>-0.488396</td>
+      <td>0.415124</td>
+      <td>2.025525</td>
+      <td>-0.662108</td>
+      <td>...</td>
+      <td>-2.885274</td>
+      <td>0.332346</td>
+      <td>0.741047</td>
+      <td>1.853693</td>
+      <td>2.325089</td>
+      <td>-3.999570</td>
+      <td>1.222131</td>
+      <td>-0.453395</td>
+      <td>-4.235684</td>
+      <td>-2.452576</td>
+    </tr>
+  </tbody>
+</table>
+<p>7994 rows × 83 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4b13f5ae-2615-4bbf-8593-7ea254261a97')" title="Convert this dataframe to an interactive table." style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"></path><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"></path>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-4b13f5ae-2615-4bbf-8593-7ea254261a97 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-4b13f5ae-2615-4bbf-8593-7ea254261a97');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+</div>
+<hr>
+<p><code>pd.df.corr()</code>: Compute pairwise correlation of columns. (<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html">doc</a>)</p>
+<p><code>scipy.stats.pearsonr()</code>: Pearson correlation coefficient and p-value for testing non-correlation. <code>[1]</code> returns the pval for the corr. (<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html">doc</a>)</p>
+<p><code>np.eye()</code>: Return a 2-D array with ones on the diagonal and zeros elsewhere.</p>
+<p><code>pd.df.applymap()</code>: Apply a function to a Dataframe elementwise. (<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.applymap.html">doc</a>)</p>
+<ol type="1">
+<li>get the pairwise corr between columns</li>
+<li>get pairwise p-val of corr between columns, <code>-np.eye()</code> to set self corr p-vals to 0</li>
+<li>get the p-vals with significance for every cell of df</li>
+<li>get the annotation df by combining corr + p-val</li>
+</ol>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>corr_df <span class="op">=</span> ge.corr()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pval <span class="op">=</span> ge.corr(method<span class="op">=</span><span class="kw">lambda</span> x, y: pearsonr(x, y)[<span class="dv">1</span>]) <span class="op">-</span> np.eye(<span class="op">*</span>corr_df.shape)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> pval.applymap(<span class="kw">lambda</span> x: <span class="st">''</span>.join([<span class="st">'*'</span> <span class="cf">for</span> t <span class="kw">in</span> [<span class="fl">.05</span>, <span class="fl">.01</span>, <span class="fl">.001</span>] <span class="cf">if</span> x<span class="op">&lt;=</span>t]))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>annot_df <span class="op">=</span> corr_df.<span class="bu">round</span>(<span class="dv">2</span>).astype(<span class="bu">str</span>) <span class="op">+</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="491397c7-84a9-4d25-85d1-eb5e78b42712" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(corr_df.iloc[:<span class="dv">20</span>, :<span class="dv">20</span>], dtype<span class="op">=</span><span class="bu">bool</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr_df.iloc[:<span class="dv">20</span>, :<span class="dv">20</span>], mask<span class="op">=</span>mask,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span>cmap, center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">'s'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        square<span class="op">=</span><span class="va">True</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.3</span>},</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        annot_kws<span class="op">=</span>{<span class="st">"fontsize"</span>:<span class="dv">8</span>},</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig(fname='grouped_corr.jpg', bbox_inches='tight', dpi=300)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="corr_heatmaps_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<p>Can choose only a few columns to visualize:</p>
+<div class="cell" data-outputid="5512dbda-5d80-424b-e514-c8a50658f61a" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>target_genes <span class="op">=</span> [<span class="st">'AO-A12D.01TCGA'</span>, <span class="st">'C8-A131.01TCGA'</span>, <span class="st">'AO-A12B.01TCGA'</span>, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">'BH-A18Q.02TCGA'</span>, <span class="st">'C8-A130.02TCGA'</span>, <span class="st">'C8-A138.03TCGA'</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">'E2-A154.03TCGA'</span>, <span class="st">'C8-A12L.04TCGA'</span>, <span class="st">'A2-A0EX.04TCGA'</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">'AO-A12D.05TCGA'</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>smol_corr_df <span class="op">=</span> corr_df.loc[target_genes, target_genes]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>smol_annot_df <span class="op">=</span> annot_df.loc[target_genes, target_genes]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(smol_corr_df, dtype<span class="op">=</span><span class="bu">bool</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>sns.heatmap(smol_corr_df, annot<span class="op">=</span>smol_annot_df, mask<span class="op">=</span>mask,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span>cmap, center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">'s'</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        square<span class="op">=</span><span class="va">True</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.3</span>},</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        annot_kws<span class="op">=</span>{<span class="st">"fontsize"</span>:<span class="dv">8</span>},</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig(fname='grouped_corr.jpg', bbox_inches='tight', dpi=300)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="corr_heatmaps_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<p>The above can look too crowded and cluttered; so a filter for absolute corr value makes for a claner looking plot.</p>
+<div class="cell" data-outputid="f577e85b-cefe-4e22-8934-efdc60838a22" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>smol_corr_df <span class="op">=</span> corr_df.loc[target_genes, target_genes]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>smol_annot_df <span class="op">=</span> annot_df.loc[target_genes, target_genes]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>corr_th <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>smol_corr_df_ <span class="op">=</span> smol_corr_df[np.<span class="bu">abs</span>(smol_corr_df) <span class="op">&gt;=</span> corr_th]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>smol_annot_df_ <span class="op">=</span> smol_corr_df_.<span class="bu">round</span>(<span class="dv">2</span>).fillna(<span class="st">''</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(smol_corr_df_, dtype<span class="op">=</span><span class="bu">bool</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>sns.heatmap(smol_corr_df_, annot<span class="op">=</span>smol_annot_df_, mask<span class="op">=</span>mask,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span>cmap, center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">'s'</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        square<span class="op">=</span><span class="va">True</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        cbar_kws<span class="op">=</span>{<span class="st">"shrink"</span>: <span class="fl">.3</span>},</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        annot_kws<span class="op">=</span>{<span class="st">"fontsize"</span>:<span class="dv">8</span>},</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">''</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig(fname='grouped_corr.jpg', bbox_inches='tight', dpi=300)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>Text(0.5, 15.0, '')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="corr_heatmaps_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<p>Questions:</p>
+<ol type="1">
+<li>How does pd implement the pair-wise correlation of columns?</li>
+</ol>
+<hr>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

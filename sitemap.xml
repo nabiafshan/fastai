@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nabiafshan.github.io/fastai/pretty plots/corr_heatmaps.html</loc>
+    <lastmod>2023-03-16T18:34:16.229Z</lastmod>
+  </url>
+  <url>
     <loc>https://nabiafshan.github.io/fastai/index.html</loc>
-    <lastmod>2022-10-22T12:23:01.230Z</lastmod>
+    <lastmod>2023-03-16T18:34:16.534Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nabiafshan.github.io/fastai/blog/pda.html</loc>
+    <lastmod>2023-03-16T18:34:16.885Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/blog/create_blog.html</loc>
-    <lastmod>2022-10-22T12:23:01.580Z</lastmod>
+    <lastmod>2023-03-16T18:34:17.165Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/about.html</loc>
-    <lastmod>2022-10-22T12:23:01.889Z</lastmod>
+    <lastmod>2023-03-16T18:34:17.466Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/lessons/01_what_is_that.html</loc>
-    <lastmod>2022-10-22T12:23:02.375Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nabiafshan.github.io/fastai/lessons/hello.html</loc>
-    <lastmod>2022-10-22T12:23:02.646Z</lastmod>
+    <lastmod>2023-03-16T18:34:17.791Z</lastmod>
   </url>
   <url>
     <loc>https://nabiafshan.github.io/fastai/blog.html</loc>
-    <lastmod>2022-10-22T12:23:03.022Z</lastmod>
+    <lastmod>2023-03-16T18:34:18.057Z</lastmod>
   </url>
 </urlset>
