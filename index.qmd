@@ -2,6 +2,13 @@
 title: "fastai notes"
 ---
 
-This is a Quarto website.
+Idea list:
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+* L2 where J shows visualisations of gradient descent. Scale up + make pretty ones.
+* L4 project: build tweet sentiment analysis thing with great visualizations
+    * how would you build an app around this?
+        * get similar tweets?
+        * tweets around a topic at a given time? across time?
+* L4, J mentions it's a good idea to get a feel for what metrics look like. Create a notebook for that.
+* L3- an app hosted on huggingface. Want to get `lncrna` related work up there.
+    * could try and get other models up there as well?

@@ -12,13 +12,16 @@ website:
     style: "docked"
     search: true
     contents:
-      - section: "Blog"
+      - section: "Pretty plots"
+        contents:
+          - pretty plots/corr_heatmaps.ipynb
+      - section: "fastai"
+        contents:
+          - lessons/01_what_is_that.ipynb
+      - section: "Notes"
         contents:
           - blog/create_blog.ipynb
-      - section: "Lessons"
-        contents:
-          - lessons/hello.ipynb
-          - lessons/01_what_is_that.ipynb
+          - blog/pda.ipynb
 
 format:
   html:
