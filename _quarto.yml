@@ -22,6 +22,7 @@ website:
         contents:
           - blog/create_blog.ipynb
           - blog/pda.ipynb
+          - blog/devops.ipynb
 
 format:
   html:

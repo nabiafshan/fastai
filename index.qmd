@@ -1,8 +1,17 @@
 ---
-title: "fastai notes"
+title: "Notes"
+---
+Quick re-start with Quarto:
+
+* add new `.ipynb` to the relevant folder, e.g. `blog`
+* add path to `_quarto.yml`
+* command line: `quarto preview blog` 
+
+Q: what other file types can I add? e.g. `md` might be smaller.
+
 ---
 
-Idea list:
+fastai idea list:
 
 * L2 where J shows visualisations of gradient descent. Scale up + make pretty ones.
 * L4 project: build tweet sentiment analysis thing with great visualizations
