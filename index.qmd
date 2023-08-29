@@ -6,7 +6,7 @@ Quick re-start with Quarto:
 * add new `.ipynb` to the relevant folder, e.g. `blog`
 * add path to `_quarto.yml`
 * command line: `quarto preview blog` 
-* while on main, `git add .`, `git commit`, `git push`
+* while on main, `git add .`, `git commit -m ''`, `git push`
 * quarto publish gh-pages
 
 Q: what other file types can I add? e.g. `md` might be smaller.
