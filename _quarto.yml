@@ -23,6 +23,7 @@ website:
           - blog/create_blog.ipynb
           - blog/pda.ipynb
           - blog/devops.ipynb
+          - blog/python_standard_library.ipynb
 
 format:
   html:
