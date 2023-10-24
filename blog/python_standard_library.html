@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/devops.html" class="sidebar-item-text sidebar-link">Tools for new repo</a>
+  <a href="../blog/devops.html" class="sidebar-item-text sidebar-link">Devops</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -230,6 +230,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#glob" id="toc-glob" class="nav-link" data-scroll-target="#glob"><code>glob</code></a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#numerical-and-mathematical-modules" id="toc-numerical-and-mathematical-modules" class="nav-link" data-scroll-target="#numerical-and-mathematical-modules">Numerical and mathematical modules</a>
+  <ul class="collapse">
+  <li><a href="#random" id="toc-random" class="nav-link" data-scroll-target="#random"><code>random</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -294,9 +298,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, <span class="bu">file</span> <span class="kw">in</span> <span class="bu">enumerate</span>(globs):</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, <span class="bu">file</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
+</section>
+</section>
+<section id="numerical-and-mathematical-modules" class="level1">
+<h1>Numerical and mathematical modules</h1>
+<section id="random" class="level2">
+<h2 class="anchored" data-anchor-id="random"><code>random</code></h2>
+<p><a href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p>
+<blockquote class="blockquote">
+<p>For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>On the real line, there are functions to compute uniform, normal (Gaussian), lognormal, negative exponential, gamma, and beta distributions. For generating distributions of angles, the von Mises distribution is available.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>However, being completely deterministic, it is not suitable for all purposes, and is completely unsuitable for cryptographic purposes.</p>
+</blockquote>
+<p><a href="https://docs.python.org/3/library/random.html#examples">https://docs.python.org/3/library/random.html#examples</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>random.random()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>random.uniform(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>random.randint(<span class="dv">1</span>,<span class="dv">6</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>random.randint(<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># simulate coin toss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'pear'</span>, <span class="st">'nar'</span>, <span class="st">'mango'</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>random.choice(fruits) <span class="co"># single value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate roulette wheel: 18 reds, 18 blacks, 2 greens</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'red'</span>, <span class="st">'black'</span>, <span class="st">'green'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>spin_results <span class="op">=</span> random.choices(population<span class="op">=</span>colors,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                              weights<span class="op">=</span>[<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">2</span>],</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                              k<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shuffle a deck of cards</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>deck <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">53</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>deck <span class="op">=</span> random.shuffle(deck)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pick a hand of 5 unique cards</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> random.sample(population<span class="op">=</span>deck, k<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
 </section>
 </section>
 
